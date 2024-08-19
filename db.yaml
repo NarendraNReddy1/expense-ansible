@@ -2,7 +2,7 @@
   hosts: db
   become: yes
   vars:
-    login_host: db.narenda.shop
+    login_host: db.narendra.shop
   vars_prompt:
   - name: mysql_root_password
     prompt: Please enter mysql root password
