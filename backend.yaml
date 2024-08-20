@@ -14,8 +14,11 @@
 
   - name: install nodejs:20
     ansible.builtin.dnf: #RHEL 
-      name: nodejs
+      name: "{{item}}"
       state: installed
+      loop:
+      - nodejs 
+      - mysql  
 
   - name: useradd expense
     ansible.builtin.user:
@@ -53,7 +56,7 @@
       - PyMySQL
       - cryptography
       executable: pip3.9 
-      
+
   - name: import data into mysql
     community.mysql.mysql_db:
       login_user: root
