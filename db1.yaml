@@ -27,4 +27,6 @@
       login_password: ExpenseApp@1
       login_host: db.narendra.shop
       filter: version   
+    ignore_errors: yes 
+    register: mysql_connection_output      
 
