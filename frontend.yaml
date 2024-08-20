@@ -20,10 +20,15 @@
       path: /usr/share/nginx/html
       state: absent
 
-  - name: rm -rf /usr/share/nginx/html/*
+  - name: create /usr/share/nginx/html/*
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory     
+
+  - name: download backend code
+    ansible.builtin.get_url: 
+      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+      dest: /tmp/frontend.zip
 
 
 
