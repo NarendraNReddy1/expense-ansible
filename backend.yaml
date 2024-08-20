@@ -71,7 +71,7 @@
       daemon_reload: true
 
   - name: backend 
-    ansible.builtin.system:
+    ansible.builtin.service:
       name: backend
       state: installed
       enabled: yes 
