@@ -20,4 +20,11 @@
       path: /usr/share/nginx/html
       state: absent
 
+  - name: rm -rf /usr/share/nginx/html/*
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: present      
+
+
+
 
