@@ -35,6 +35,11 @@
       dest: /app
       remote_src: yes
 
+  - name: npm dependencies
+    andible.builtin.command: npm install
+    args:
+      chdir: /app      
+
 
 
 
