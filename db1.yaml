@@ -1,6 +1,12 @@
 - name: mysql
   hosts: db
   become: yes 
+  vars:
+    login_host: db.narendra.shop
+  vars_prompt:
+    name: mysql_root_password
+    prompt: "Pls enter db password:::"
+    private: no
   tasks:
   - name: db 
     ansible.builtin.dnf:
@@ -24,9 +30,13 @@
   - name: mysql info
     community.mysql.mysql_info:
       login_user: root
-      login_password: ExpenseApp@1
-      login_host: db.narendra.shop
+      login_password: "{{mysql_root_password}}"
+      login_host: "{{login_host}}"
       filter: version   
     ignore_errors: yes 
-    register: mysql_connection_output      
+    register: mysql_connection_output
+
+  - name: print connection output
+    ansible.builtin.debug:
+      msg: "{{mysql_connection_output}}"
 
