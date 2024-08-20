@@ -1,0 +1,14 @@
+- name: mysql
+  hosts: db
+  become: yes 
+  tasks:
+  - name: db 
+    ansible.builtin.dnf:
+      name: mysql-server
+      state: latest
+  - name: start and enable
+    ansible.builtin.service:
+      name: mysqld
+      state: started
+      enabled: yes
+          
