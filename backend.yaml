@@ -16,9 +16,9 @@
     ansible.builtin.dnf: #RHEL 
       name: "{{item}}"
       state: installed
-      loop:
-      - nodejs 
-      - mysql  
+    loop:
+    - nodejs 
+    - mysql  
 
   - name: useradd expense
     ansible.builtin.user:
