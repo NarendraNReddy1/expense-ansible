@@ -2,7 +2,12 @@
   become: yes
   hosts: backend
   vars:
-
+    login_user: root
+    login_host: db.narendra.shop
+  vars_prompt:
+    name: mysql_root_password
+    prompt: "Enter db root password:::"
+    private: yes
   tasks:
   - name: disable default node js
     ansible.builtin.command: dnf module disable nodejs -y
@@ -44,6 +49,21 @@
     ansible.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system/backend.service
+
+  - name: install python mysql depenencies
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      - cryptography
+      executable: pip3.9  
+  - name: DB connection
+    community.mysql.mysql_db:
+      login_user: root
+      login_password: "{{mysql_root_password}}"
+      login_host: "{{login_host}}"    
+
+
+
       
 
 
