@@ -23,7 +23,7 @@
   - name: rm -rf /usr/share/nginx/html/*
     ansible.builtin.file:
       path: /usr/share/nginx/html
-      state: present      
+      state: directory     
 
 
 
