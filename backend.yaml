@@ -6,7 +6,7 @@
   vars_prompt:
     name: mysql_root_password
     prompt: "Enter db root password:::"
-    private: yes
+    private: no
   tasks:
   - name: disable default node js
     ansible.builtin.command: dnf module disable nodejs -y
@@ -63,7 +63,7 @@
       target: /app/schema/backend.sql
       state: import
       name: all
-        
+
 
 
 
