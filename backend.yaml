@@ -73,7 +73,7 @@
   - name: backend 
     ansible.builtin.service:
       name: backend
-      state: installed
+      state: started
       enabled: yes 
      
 
